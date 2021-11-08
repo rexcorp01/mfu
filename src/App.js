@@ -9,6 +9,7 @@ import Profile from './pages/profile';
 import { Routes, Route, Link, BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import NavBar from './components/NavBar';
+import MutualFundItem from './pages/mutualFundList';
 
 function App() {
  
@@ -37,6 +38,8 @@ function App() {
          
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/mutual-fund/:id" element={<MutualFundItem />} />
+
             
           
           
