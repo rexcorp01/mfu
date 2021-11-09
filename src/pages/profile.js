@@ -16,9 +16,10 @@ const Profile = () => {
     }
     const onSubmit = data => {
         
-        localStorage.setItem('user', JSON.stringify(data))
+        localStorage.setItem('user', JSON.stringify({user: data}))
         dispatch(setUserState());
         alert('Details updated Successfully');
+        setEditMode(!editMode);
         // navigate('/');
     };
      useEffect(() => {
@@ -51,12 +52,12 @@ const Profile = () => {
                             {errors.email && <span className="error">This field is required</span>}
                             
                         </div>
-                        <div className="input-col col-md-10">
+                        {/* <div className="input-col col-md-10">
                             <label htmlFor="password" className="form-label">Password</label>
-                            <input defaultValue={userState.userState && userState.userState.user.password} placeholder="Enter your password" {...register("password", { required: true, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/})} type="password" className="form-control" id="password" readOnly={ !editMode}/>
+                            <input defaultValue={userState.userState && userState.userState.user.password} placeholder="Enter your password" {...register("password", { required: true, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/})} type="password" className="form-control" id="password" readOnly={ !editMode} disabled/>
                             {(errors.password && errors.password.type === 'required') && <span className="error">This field is required</span>}
                             {(errors.password && errors.password.type === 'pattern') && <span className="error">Password must contain at least eight characters, at least one number and both lower and uppercase letters and special characters (eg: </span>}
-                        </div>
+                        </div> */}
                         
                         <div className="input-col col-10 col-md-10">
                             <label htmlFor="gender" className="form-label">Select Gender</label>

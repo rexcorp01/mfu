@@ -7,7 +7,7 @@ import { setUserState } from '../actions/index';
 const NavBar = () => {
     const userState = useSelector((state) => state);
     const dispatch = useDispatch();
-    console.log(userState);
+    // console.log(userState);
 
     const logout = () => {
         localStorage.removeItem('user');
