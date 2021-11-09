@@ -16,9 +16,9 @@ const Login = () => {
         dispatch(setUserState());
         navigate('/');
     };
-    console.log(watch("email"));
-    console.log(watch("password"));
-    console.log(errors)
+    // console.log(watch("email"));
+    // console.log(watch("password"));
+    // console.log(errors)
     return (
         <div className="container">
             <div className="col-md-6 ms-auto me-auto">
@@ -26,13 +26,13 @@ const Login = () => {
                     
                     <form onSubmit={handleSubmit(onSubmit)} className='login-form'>
                         <h3 className="h3 mb-5">Login to Mutual Fund</h3>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="email" className="form-label">Email</label>
                             <input defaultValue="" placeholder="Enter your email" {...register("email", { required: true })} type="email" className="form-control" id="email" />
                             {errors.email && <span className="error">This field is required</span>}
                             
                         </div>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="password" className="form-label">Password</label>
                             <input defaultValue="" placeholder="Enter your password" {...register("password", { required: true, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/})} type="password" className="form-control" id="password" />
                             {(errors.password && errors.password.type === 'required') && <span className="error">This field is required</span>}

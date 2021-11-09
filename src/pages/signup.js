@@ -12,14 +12,14 @@ const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const user = {"user":{"name":"Suman Nunia","email":"nuniasuman55@gmail.com","password":"Admin@12345","gender":"male","dob":"1996-01-09"}}
     const onSubmit = data => {
-        console.log(JSON.stringify(data))
-        localStorage.setItem('user', JSON.stringify(user))
+        // console.log(JSON.stringify(data))
+        localStorage.setItem('user', JSON.stringify({ user: data }));
         dispatch(setUserState());
         navigate('/');
     };
-    console.log(watch("email"));
-    console.log(watch("password"));
-    console.log(errors)
+    // console.log(watch("email"));
+    // console.log(watch("password"));
+    // console.log(errors)
     return (
         <div className="container">
             <div className="col-md-6 ms-auto me-auto">
@@ -27,19 +27,19 @@ const SignUp = () => {
                     
                     <form onSubmit={handleSubmit(onSubmit)} className='login-form'>
                         <h3 className="h3 mb-5">Sign Up to Mutual Fund</h3>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="name" className="form-label">Name</label>
                             <input defaultValue="" placeholder="Enter your name" {...register("name", { required: true })} type="text" className="form-control" id="name" />
                             {errors.name && <span className="error">This field is required</span>}
                             
                         </div>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="email" className="form-label">Email</label>
                             <input defaultValue="" placeholder="Enter your email" {...register("email", { required: true })} type="email" className="form-control" id="email" />
                             {errors.email && <span className="error">This field is required</span>}
                             
                         </div>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="password" className="form-label">Password</label>
                             <input defaultValue="" placeholder="Enter your password" {...register("password", { required: true, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/})} type="password" className="form-control" id="password" />
                             {(errors.password && errors.password.type === 'required') && <span className="error">This field is required</span>}

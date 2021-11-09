@@ -4,12 +4,12 @@ import { getAll } from '../services';
 import { Line } from 'react-chartjs-2';
 
 const MutualFundItem = () => {
-    const [graphData, setGraphData] = useState({label: [], dataSet: []});
+    const [graphData, setGraphData] = useState({label: [], dataSet: [], graphLabel: ''});
     const data = {
         labels: graphData.label,
         datasets: [
             {
-            label: 'Standard Chartered Mutual Fund',
+            label: graphData.graphLabel,
             data: graphData.dataSet,
             fill: false,
             backgroundColor: 'rgb(255, 99, 132)',
@@ -36,7 +36,7 @@ const MutualFundItem = () => {
             value.push(datam.nav);
         });
         // console.log(date, value)
-        setGraphData({label: date, dataSet: value})
+        setGraphData({label: date, dataSet: value, graphLabel: response.meta.fund_house})
     };
     const router = useParams();
     const [itemDetail, setItemDetail] = useState(null);

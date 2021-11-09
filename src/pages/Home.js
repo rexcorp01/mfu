@@ -12,6 +12,7 @@ const Home = () => {
     const [listOfMf, setListOfMf] = useState(null);
     const [completeList, setCompleteList] = useState(null);
     const [searchList, setSearchList] = useState(null);
+    const [searchClickResponse, setSearchClickResponsse] = useState(null);
     const navigate = useNavigate();
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -33,7 +34,7 @@ const Home = () => {
     }, []);
     
     const getSearchIems = () => {
-        console.log(searchInput.current.value)
+        // console.log(searchInput.current.value)
         
             // let value = e.target.value.toLowerCase();
             let value = searchInput.current.value.toLowerCase();
@@ -42,14 +43,22 @@ const Home = () => {
                 return detail.schemeName.toLowerCase().includes(value);
             });
             setSearchList(filteredList);
-            console.log(filteredList)
+            // console.log(filteredList)
         
   
     };
     const onSubmit = data => getSearchIems();
 
     const showUrl = (code) => {
+        setSearchClickResponsse(code);
         setSearchList(null);
+
+    };
+
+    const blurAction = () => {
+        setTimeout(() => {
+            setSearchList(null);
+        }, 1000);
     };
     return (
         <>
@@ -59,7 +68,7 @@ const Home = () => {
                         <div className="search-block">
                             <div className="input-block">
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <input type="text" ref={searchInput}  className="form-control" onBlur={() => setSearchList(null)} />
+                                    <input type="text" ref={searchInput}  className="form-control" onBlur={() => blurAction} />
                                     <div className="seach-icon" onClick={getSearchIems}>
                                         {<SearchIcon />}
                                     </div>
@@ -78,6 +87,12 @@ const Home = () => {
                                     </div>
                                 </>
                             }
+                            {searchClickResponse && <>
+                                <div className="search-click-box">
+                                    <p className="search-click-response"><span>MF API URL : <Link to={`/mutual-fund/${searchClickResponse}`} className="api-link"> https://api.mfapi.in/mf/{ searchClickResponse }</Link></span></p>
+                                </div>
+                            </>}
+                            
                             
                         </div>
                         {!listOfMf && <>

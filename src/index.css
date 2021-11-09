@@ -172,3 +172,12 @@ h4.sub-title-of-item.h4 {
   align-items: center;
   justify-content: center;
 }
+.search-click-box {
+  margin-top: 2rem;
+  text-align: center;
+}
+a.api-link {
+  font-size: 24px;
+  font-weight: 400;
+  text-decoration: underline;
+}
