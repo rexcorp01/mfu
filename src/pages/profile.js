@@ -40,13 +40,13 @@ const Profile = () => {
                         <div className="edit-btn-container">
                             <button type="button" className="btn" onClick={() => {changeEditMode()}} disabled={editMode}>Edit Profile</button>
                         </div>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="name" className="form-label">Name</label>
                             <input defaultValue={userState.userState && userState.userState.user.name} placeholder="Enter your name" {...register("name", { required: true })} type="text" className="form-control" id="name" readOnly={ !editMode}/>
                             {errors.name && <span className="error">This field is required</span>}
                             
                         </div>
-                        <div className="input-col col-md-10">
+                        <div className="input-col col-10 col-md-10">
                             <label htmlFor="email" className="form-label">Email</label>
                             <input defaultValue={userState.userState && userState.userState.user.email} placeholder="Enter your email" {...register("email", { required: true })} type="email" className="form-control" id="email" readOnly={ !editMode}/>
                             {errors.email && <span className="error">This field is required</span>}
