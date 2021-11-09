@@ -61,7 +61,7 @@ const Home = () => {
                         <div className="search-block">
                             <div className="input-block">
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <input type="text" ref={searchInput}  className="form-control" onBlur={() => blurAction} />
+                                    <input type="text" ref={searchInput}  className="form-control"  placeholder="Enter the mutual fund name"/>
                                     <div className="seach-icon" onClick={getSearchIems}>
                                         {<SearchIcon />}
                                     </div>
