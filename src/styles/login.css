@@ -1,8 +1,6 @@
 .form-container {
-  /* display: flex; */
   height: 100%;
-  /* margin-top: auto; */
-  min-height: 92vh;
+  min-height: 88vh;
   display: grid;
   place-items: center;
 }
@@ -21,6 +19,7 @@ form.login-form {
   position: relative;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  background-color: #fff;
 }
 button.btn.login-btn {
   min-width: 120px;
@@ -32,10 +31,8 @@ button.btn.login-btn {
   position: absolute;
   top: 60px;
   right: 5px;
-  /* padding: 10px; */
   background: red;
   border-radius: 5px;
-  /* color: #fff; */
 }
 .edit-btn-container .btn {
   color: #fff !important;

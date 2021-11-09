@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate, Link } from "react-router-dom";
 import { getAll } from '../services';
 import _ from 'lodash';
@@ -15,7 +15,7 @@ const Home = () => {
     const [searchClickResponse, setSearchClickResponsse] = useState(null);
     const navigate = useNavigate();
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {  handleSubmit, formState: { errors } } = useForm();
     
     
     useEffect(() => {
@@ -27,25 +27,18 @@ const Home = () => {
     useEffect(() => {
         const data = getAll('https://api.mfapi.in/mf')
             .then((data) => {
-                // console.log(data)
                 data && setListOfMf(data.slice(0, 5));
                 data && setCompleteList(data);
             });
     }, []);
     
     const getSearchIems = () => {
-        // console.log(searchInput.current.value)
-        
-            // let value = e.target.value.toLowerCase();
+       
             let value = searchInput.current.value.toLowerCase();
             let filteredList = completeList.filter(detail => {
-                // return detail.schemeName.search(new RegExp(value, "i"))
                 return detail.schemeName.toLowerCase().includes(value);
             });
             setSearchList(filteredList);
-            // console.log(filteredList)
-        
-  
     };
     const onSubmit = data => getSearchIems();
 
@@ -64,7 +57,7 @@ const Home = () => {
         <>
             <main>
                 <article>
-                    <div className="container mt-5 mb-5">
+                    <div className="container ">
                         <div className="search-block">
                             <div className="input-block">
                                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -124,8 +117,8 @@ export default Home;
 
 const SearchIcon = () => {
     return <>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg>
     </>
-}
+};
